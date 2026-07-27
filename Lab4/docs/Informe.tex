@@ -126,7 +126,7 @@ comunicaciones en punto flotante. El sistema consta de los siguientes bloques:
 \begin{itemize}
     \item \textbf{Generador PRBS9}: Genera secuencias pseudoaleatorias de 511 bits
           utilizando un LFSR de 9 bits con polinomio
-          característico $x^9 + x^4 + 1$. Se utilizan dos instancias
+          característico $x^9 + x^5 + 1$. Se utilizan dos instancias
           independientes con semillas distintas ($\text{SEED\_I} = \text{0x1AA}$,
           $\text{SEED\_Q} = \text{0x1FE}$) para generar las componentes I y Q.
     \item \textbf{Mapeo QPSK}: Cada par de bits se mapea a símbolos complejos $\pm 1\pm j$ siguiendo un mapeo estandar de QPSK.\@
@@ -158,8 +158,6 @@ Los parámetros principales del simulador se resumen en la Tabla 1.
 \end{table}
 
 \subsection{Fase 2: Simulación en Python de Punto Fijo}
-
-
 
 \subsection{Fase 3: Implementación en Verilog}
 

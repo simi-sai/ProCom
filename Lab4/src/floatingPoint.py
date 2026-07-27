@@ -30,7 +30,7 @@ def PRBS9_generator(n_bits, seed=0x1FF):
     for _ in range(n_bits):
         prbs9.append(state & 1)
 
-        new_bit = ((state >> 3) ^ (state >> 8)) & 1
+        new_bit = ((state >> 4) ^ (state >> 8)) & 1
         state = (state >> 1) | (new_bit << 8)
 
     return prbs9
