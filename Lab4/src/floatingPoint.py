@@ -89,11 +89,11 @@ def BER(bits_tx, bits_rx):
     @param bits_rx: List of received bits
     @return: BER value
     """
-    
+
     n = min(len(bits_tx), len(bits_rx))
     errors = np.sum(np.array(bits_tx[:n]) != np.array(bits_rx[:n]))
     ber = errors / n
-    
+
     return ber, errors, n
 
 
@@ -237,19 +237,17 @@ if __name__ == "__main__":
 
     # -------- 5. BER (Bit Error Rate) --------
 
-    offset_opt = 3 # Fase óptima de muestreo
-    
-    sampled_i = signal_i[offset_opt::OS]
-    sampled_q = signal_q[offset_opt::OS]
-    
+    sampling_offset = 1
+
+    sampled_i = signal_i[sampling_offset::OS]
+    sampled_q = signal_q[sampling_offset::OS]
+
     discreted_i = (sampled_i > 0).astype(int)
     discreted_q = (sampled_q > 0).astype(int)
-    
+
     ber, errors_i, n_i = BER(bits_i, discreted_i)
     ber, errors_q, n_q = BER(bits_q, discreted_q)
-    
-    print("Bit Error Rate (BER) Results: (offset = %d)" % offset_opt)
+
+    print("Bit Error Rate (BER) Results: (offset = %d)" % sampling_offset)
     print(f"BER Canal I: {ber:.2f} % (Errores: {errors_i}/{n_i})")
     print(f"BER Canal Q: {ber:.2f} % (Errores: {errors_q}/{n_q})")
-
-
