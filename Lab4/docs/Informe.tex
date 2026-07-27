@@ -175,7 +175,7 @@ semillas distintas.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/bits_transmitidos.png}
+    \includegraphics[width=0.85\textwidth]{../images/floating_point/bits_transmitidos.png}
     \caption{Bits transmitidos por el generador PRBS9 para las componentes I y Q.}
 \end{figure}
 
@@ -189,7 +189,7 @@ decaen rápidamente. La duración total del filtro es de $N_{baud} = 8$ símbolo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/impulso.png}
+    \includegraphics[width=0.85\textwidth]{../images/floating_point/impulso.png}
     \caption{Respuesta al impulso del filtro Raised Cosine con $\beta = 0.5$.}
 \end{figure}
 
@@ -201,7 +201,7 @@ corresponde al punto de corte del roll-off.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/frecuencia.png}
+    \includegraphics[width=0.85\textwidth]{../images/floating_point/frecuencia.png}
     \caption{Respuesta en frecuencia del filtro Raised Cosine con $\beta = 0.5$.}
 \end{figure}
 
@@ -215,7 +215,7 @@ controlada.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{../images/salida_filtro.png}
+    \includegraphics[width=0.85\textwidth]{../images/floating_point/salida_filtro.png}
     \caption{Señal filtrada a la salida del filtro TX para las componentes I
         y Q.}
 \end{figure}
@@ -227,7 +227,7 @@ coincide con el pico de la respuesta al impulso del filtro.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../images/diagrama_ojo.png}
+    \includegraphics[width=0.9\textwidth]{../images/floating_point/diagrama_ojo.png}
     \caption{Diagramas de ojo de las componentes I (azul) y Q (rojo).}
 \end{figure}
 
@@ -240,7 +240,7 @@ directamente la calidad de la constelación.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../images/constelacion.png}
+    \includegraphics[width=0.95\textwidth]{../images/floating_point/constelacion.png}
     \caption{Constelación QPSK para las cuatro fases de muestreo.}
 \end{figure}
 
@@ -272,16 +272,16 @@ correctamente.
 
 Tambien se comprobaron los resultados de BER para los offsets no óptimos, en
 los casos de offset 0 y 2 se mantuvo el BER en 0.0\%, mientras que para el
-offset 3 se obtuvo un BER de 0.28\% para ambos canales, indicando que una
-selección incorrecta del offset de muestreo puede introducir errores en la
-decodificación de los bits.
+offset 3 se obtuvo un BER de $\approx$28.0 para el canal I y 14.87\% para el
+canal Q, indicando que una selección incorrecta del offset de muestreo puede
+introducir errores en la decodificación de los bits.
 
 \begin{figure}[H]
     \centering
     \begin{lstlisting}[frame=single, basicstyle=\scriptsize\ttfamily]
     Bit Error Rate (BER) Results: (offset = 3)
-    BER Canal I: 0.28 % (Errores: 147/511)
-    BER Canal Q: 0.28 % (Errores: 144/511)
+    BER Canal I: 14.87 % (Errores: 76/511)
+    BER Canal Q: 27.98 % (Errores: 143/511)
 \end{lstlisting}
     \caption{Resultados de BER para el offset no óptimo.}
 \end{figure}

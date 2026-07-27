@@ -4,7 +4,7 @@ from legacy.DSPtools import resp_freq, eyediagram
 
 # Parameters for floating point representation
 
-T = 1.0/100.0e6  # 100 MHz
+T = 1.0/100.0e6  # f = 100 MHz
 OS = 4
 N_BAUDS = 8
 BETA = 0.5  # roll-off
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     plt.ylim(-0.2, 1.2)
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('../images/bits_transmitidos.png')
+    plt.savefig('../images/floating_point/bits_transmitidos.png')
 
     # -------- 2. RESPUESTA AL IMPULSO Y FRECUENCIA --------
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     plt.title('Respuesta al impulso del filtro')
     plt.legend()
     plt.grid(True)
-    plt.savefig('../images/impulso.png')
+    plt.savefig('../images/floating_point/impulso.png')
 
     # Frecuencia (convertir a MHz para legibilidad)
     F_MHz = np.array(F) / 1e6
@@ -173,7 +173,7 @@ if __name__ == "__main__":
     plt.xlabel('Frecuencia [MHz]')
     plt.ylabel('Magnitud [dB]')
     plt.tight_layout()
-    plt.savefig('../images/frecuencia.png')
+    plt.savefig('../images/floating_point/frecuencia.png')
 
     # -------- 3. SALIDA Y DIAGRAMA DE OJO --------
 
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     plt.legend()
     plt.xlabel('Muestras')
     plt.ylabel('Magnitud')
-    plt.savefig('../images/salida_filtro.png')
+    plt.savefig('../images/floating_point/salida_filtro.png')
 
     # Diagrama de ojo
     n_bauds = 8
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     ax2.set_ylabel('Magnitud')
     fig.suptitle(f'Diagramas de Ojo - Offset = {offset}')
     plt.tight_layout()
-    plt.savefig('../images/diagrama_ojo.png')
+    plt.savefig('../images/floating_point/diagrama_ojo.png')
 
     # -------- 4. CONSTELACIÓN POR FASE --------
 
@@ -233,11 +233,11 @@ if __name__ == "__main__":
         plt.gca().set_aspect('equal', adjustable='box')
 
     plt.tight_layout()
-    plt.savefig('../images/constelacion.png')
+    plt.savefig('../images/floating_point/constelacion.png')
 
     # -------- 5. BER (Bit Error Rate) --------
 
-    sampling_offset = 1
+    sampling_offset = 3
 
     sampled_i = signal_i[sampling_offset::OS]
     sampled_q = signal_q[sampling_offset::OS]
@@ -245,9 +245,9 @@ if __name__ == "__main__":
     discreted_i = (sampled_i > 0).astype(int)
     discreted_q = (sampled_q > 0).astype(int)
 
-    ber, errors_i, n_i = BER(bits_i, discreted_i)
-    ber, errors_q, n_q = BER(bits_q, discreted_q)
+    ber_i, errors_i, n_i = BER(bits_i, discreted_i)
+    ber_q, errors_q, n_q = BER(bits_q, discreted_q)
 
     print("Bit Error Rate (BER) Results: (offset = %d)" % sampling_offset)
-    print(f"BER Canal I: {ber:.2f} % (Errores: {errors_i}/{n_i})")
-    print(f"BER Canal Q: {ber:.2f} % (Errores: {errors_q}/{n_q})")
+    print(f"BER Canal I: {ber_i*100:.2f} % (Errores: {errors_i}/{n_i})")
+    print(f"BER Canal Q: {ber_q*100:.2f} % (Errores: {errors_q}/{n_q})")
