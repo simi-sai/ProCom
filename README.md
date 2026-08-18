@@ -1,4 +1,4 @@
-# Diseño Digital en FPGA - Fundación Fulgor
+# ProCom - Fundación Fulgor
 
 Laboratorios desarrollados durante el curso de Diseño Digital en FPGA impartido por Fundación Fulgor.
 
